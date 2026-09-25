@@ -1,94 +1,80 @@
-# MiniMax H3 — Girl Content Prompting Guide
+# SOP — MiniMax H3 prompts for Instagram influencer videos
 
-**Specialized handbook: start-frame selfie → short posing video**  
-Version: 1.1 · I2VA niche edition · 24 September 2026  
-Prompt language: English only
+**Version:** 1.2  
+**Date:** 25 September 2026  
+**Language of this SOP:** English (procedure and prompt body)  
+**Scope:** standardized I2VA prompts for short, girly Instagram/TikTok selfies of attractive adult women, starting from a single photo.
 
-This is a niche specialization of the MiniMax H3 prompting guide. Official field names, section order, alignment sentences, shot notation, and sound fields are unchanged. The creative job is narrowed to one pipeline.
+This does not replace the general MiniMax H3 prompting guide. The general guide remains authoritative for **mode, field names, order, alignment rule, shot notation, and sound fields**. This SOP explains how to apply those rules to one task: bringing a starting photo to life as a candid IG/TikTok selfie.
 
-## Job of the prompt writer
-
-The model receives **one input image**. That image is the **first frame** of the video, not a loose identity reference and not an end frame.
-
-Workflow every time:
-
-1. Read the start frame (face, hair, hands, outfit, room, light, crop).
-2. Keep that exact opening state at `0.00s`.
-3. Choose **one** small posing beat that could naturally happen after this still.
-4. Write an **I2VA** prompt so the clip begins on that picture and stays in the same selfie.
-
-Do not switch to T2VA, FL2VA, L2VA, or full-reference unless the user explicitly changes the asset setup. Default mode is always I2VA.
-
-Write the prompt body in **English only**. Do not put Dutch (or any other language) in field names, descriptions, or invented speech. If the user later supplies a locked spoken line in another language, that line alone may keep its original words inside `<d>`. Default clips have **no speech**.
-
-## Purpose and limits
-
-Tasteful feminine self-cam: an adult woman already in a selfie, who barely moves. She poses for the camera. She may play with her hair a little, pout once, or lift a peace sign. She often tilts her head slightly. She does not perform a routine.
-
-Not in scope:
-
-- explicit sex, pornographic posing as the event, genital framing
-- anyone who is or appears under 18
-- busy choreography, dance, finger hearts, two-handed hearts, outfit spins, walking montages
-- stacking hair + pout + peace sign in one clip
-- invented extra people
-- on-screen TikTok UI
-
-A prompt clarifies the request. It does not guarantee exact identity lock or timing.
-
-## Contents
-
-1. Operating instructions
-2. Mode (I2VA only)
-3. Read the start frame
-4. Choose one beat
-5. Official I2VA format
-6. Camera, continuity, constraints
-7. Speech and sound (usually none)
-8. Beat library
-9. Template
-10. Worked examples matched to typical start frames
-11. Troubleshooting
-12. Validation
-13. Compact reminder
+The four prompts in §16 are **style examples** (sentence structure, identity lock, hold, close mic, R&B pad). They are not an exhaustive list of beats. New beats are allowed as long as the tone stays girly and lightly seductive — not overtly sexy, and not a gag.
 
 ---
 
-## 1. Operating instructions
+## 1. Goal
 
-### 1.1 Defaults
+Turn each request into one ready-to-use H3 prompt that:
 
-When the user does not override them:
+- uses the supplied photo as the **actual first frame**
+- looks like a **candid vertical Instagram selfie**
+- preserves the face, hair, outfit, and setting from the photo
+- follows a short hold with **a girly posing beat** in which she shows herself off
+- feels as if she is thinking: *I look so good in this video; everyone is going to love it*
+- ends in the same place and outfit
+- includes close-mic sound and a quiet R&B pad
+- follows the sentence structure of the examples in §16
 
-- mode: I2VA
-- one continuous `[Shot 1]`
-- no dialogue
-- `non_diegetic_music: N/A`
-- slight handheld drift only, no zoom, no cut
-- adult woman as seen in the photo
-- one beat only
-- end on a still hold looking at the lens
-- duration assumption if unspecified: 6–8 seconds (state the assumption outside the prompt; duration is a workflow control)
-
-### 1.2 Do not invent the photo
-
-Describe only what is visible or clearly implied by the start frame: hair color and fall, eye color, makeup density, necklace, earrings, strap color, bedsheet, car seat, wall, sunlight direction, hand position.
-
-If a hand is already at her chin or in her hair in the first frame, do not reset that hand to her lap. Continue from the occupied pose.
-
-### 1.3 Deliverable
-
-One finished prompt in one plain-text code block.
-
-Outside the prompt, a short note is allowed: assumed duration, which beat was chosen, anything unseen.
-
-No placeholders, no checklist, no commentary inside the H3 text.
+This SOP does not guarantee a perfect identity lock. It specifies the writing method.
 
 ---
 
-## 2. Mode
+## 2. Scope
 
-Always begin with the official I2VA alignment line, then one blank line, then the three base fields in order:
+**In scope**
+
+- I2VA from a single starting photo
+- car, bed, bedroom, mirror, dressing room, or any place where the photo is already a selfie
+- girly and a little seductive: she poses because she knows she looks good
+- tone: self-satisfied, playful, “look at me” — not pornographic or aggressively sexy
+- posing beats beyond the four examples; see §9
+
+**Out of scope**
+
+- gags: a fall, splash, treadmill, ball hitting someone in the face, crowd reaction
+- a crash or the implication of a crash
+- walking away to a new location or changing outfits
+- explicit bouncing, shaking, or jolting as the main event
+- a full dance routine, montage, or cut
+- inventing additional people
+- on-screen TikTok UI or watermarks
+- inventing dialogue
+- language such as “slutty,” “pornstar,” “tits bounce,” or “filthy”
+
+If the user asks for a gag or an explicit plot, that is a different task and this SOP does not apply.
+
+**Difference from the Girl Content guide:** that file is more minimal (one staple move: hair *or* pout *or* peace sign; music `N/A`). This SOP covers a fuller influencer take: more girly beats, light flirtation, and a default R&B pad. It still does not call for a sexy plot.
+
+---
+
+## 3. Workflow
+
+1. Examine the photo. Describe only what is visible.
+2. Mode = **I2VA**.
+3. Register = girly influencer, lightly seductive, not overtly sexy.
+4. Assume a duration of **6 seconds** (state it outside the prompt).
+5. Choose one beat that fits the existing pose (§9).
+6. Write the alignment line and three fields in English, following the sentence structure in §15–16.
+7. Optionally add a compact sound prompt.
+8. Check the result against §13.
+9. Deliver the prompt in a single code block. Put assumptions outside it.
+
+Ask a question only if it changes the structure: Is this actually the starting frame? Should she speak? Does the user deliberately want something outside this SOP?
+
+---
+
+## 4. Official I2VA format
+
+Use this exact first line, a blank line, then the three fields:
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
@@ -100,292 +86,308 @@ overall_soundscape: ...
 non_diegetic_music: ...
 ```
 
-`<Picture 1>` is the uploaded start frame.
-
-Do not write `subject_definitions` or `retention_analysis` for this default pipeline.
+- Write the prompt body in **English**.
+- Do not include JSON, a title, a checklist, or placeholders in the finished prompt.
+- Use one `[Shot 1]`, no opening timestamp, and no cut.
+- Other modes (T2VA, FL2VA, L2VA, full-reference) are covered by the general H3 guide.
 
 ---
 
-## 3. Read the start frame
+## 5. Intake (internal; do not send to H3)
 
-Before writing, lock these from the image:
+```text
+Starting frame examined: yes
+Mode: I2VA
+Duration: 6s
+Register: girly / lightly seductive influencer
+Camera: she holds the phone / holds it above herself
+Remains in the photo's location: yes
+Dialogue: none
+Must preserve: face, hair, outfit, hand position, setting, crop
+Allowed change: only the chosen posing beat
+```
 
-| Look at | Why it matters |
+---
+
+## 6. Defaults
+
+| Item | Default |
 | --- | --- |
-| Crop and angle | close-up face, above-her on a bed, car interior, mirror, arm’s-length selfie |
-| Head angle already in the still | if she is already tilted, keep it; do not snap her upright |
-| Eyes | toward lens, cut to the side, half-lidded |
-| Mouth | closed smile, pout, neutral, lips parted |
-| Hair | part, length, over which shoulder, covering cheek or not |
-| Hands | free, at chin, in hair, holding phone (usually out of frame on front cam) |
-| Outfit edges | white strap, black tee, smocked tube, off-shoulder |
-| Jewelry | hoop, thin chain, pendant |
-| Light | hard sun patch, warm lamp, dim indoor, car window |
-| Background | pillow, linen, car headrest, wood ceiling, bare wall |
+| Format | vertical Instagram smartphone video |
+| Look | candid, ordinary phone color, no beauty filter |
+| Camera | she holds the phone herself / above herself |
+| Movement | slight handheld selfie drift, no zoom or cut |
+| Shots | one `[Shot 1]` |
+| Opening | hold the opening look for a beat |
+| Action | one girly posing beat from §9 that fits the photo |
+| Ending | same hair, garment, place; eyes on the lens |
+| Dialogue | none |
+| Music | `Low sparse R&B pad, no vocals, quieter than her breath.` |
+| Duration | 6 seconds in the H3 UI |
 
-The first sentences after `[Shot 1]` must say the shot begins from `<Picture 1>` and preserves those facts.
-
-Then describe only what changes.
-
----
-
-## 4. Choose one beat
-
-A sensual selfie is mostly stillness. Pick **one** staple. Never all three.
-
-**Staple A — hair:** one small contact. Tuck one strand, slide fingers down a section already near her face, or move hair off her mouth. No dramatic flip. No two-handed hair toss.
-
-**Staple B — mouth:** one pout or a release from pout into a small closed smile. Do not chew, bite hard, or lick.
-
-**Staple C — peace sign:** one hand rises into a small peace sign near the cheek or chin, then holds. Only if that hand is free in the start frame.
-
-**Allowed modifier, not a second act:** a slight **head tilt** (ear toward shoulder). This is a roll/tilt of the head, not turning to look off-screen left or right. Tiny. Once.
-
-Optional micro-ending: hold the new head angle and look at the lens. That is posing, not a new beat.
-
-### How to pick from the still
-
-- Hand already in hair → continue a small hair slide, or stop moving and pout.
-- Hand already at chin → keep it there; add a tilt or a small pout. Do not also throw a peace sign with that hand.
-- Both hands free / not shown → prefer tilt + tiny smile, or one hair touch if a hand can enter at the edge without wrecking the crop.
-- Car / tight face crop → tilt or pout. Peace sign often breaks the frame; skip it.
-- She already pouts in the still → do not pout again. Tilt or one hair move.
-
-If unsure: **head tilt + hold**. It is the most native motion for this niche.
+Override these only when the user explicitly requests it (no music, a locked line of dialogue, a different duration).
 
 ---
 
-## 5. Official I2VA writing pattern
+## 7. Anatomy of the description
 
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+Use two paragraphs after `[Shot 1]`. Do not add subheadings.
 
-integrated_multimodal_description: [Shot 1] Live-action vertical smartphone front-camera footage with natural skin texture. The shot begins from <Picture 1>, preserving {face, hair, makeup, visible outfit, jewelry, hand placement, background, light direction, and crop}. The camera stays in the opening position with slight handheld drift, no zoom, and no cut. {One beat, written as physical action}. {Optional slight head tilt if not already the beat}. She holds the ending pose and keeps her eyes on the lens. Face, hairstyle, outfit, and setting stay consistent.
+### Paragraph 1 — Setup
 
-overall_soundscape: Quiet {room / car} tone. {One small fabric or hair sound if the beat needs it}.
+1. `Candid vertical Instagram selfie in {place}, {lighting}, ordinary phone color, no beauty filter.`
+2. `The shot begins from <Picture 1>, preserving {visible identity, outfit, hand/prop, setting, framing}.`
+3. `She holds the phone herself.` or `She holds the phone above herself.`
+4. `Slight handheld selfie drift, no zoom or cut.`
 
-non_diegetic_music: N/A
-```
+### Paragraph 2 — Beat
 
-Style phrase belongs right after `[Shot 1]`, derived from the photo (sunlit bed still, dim indoor phone flash, parked-car daylight, etc.).
+1. `She holds the opening look for a beat…`
+2. One continuous posing beat (a cluster of 1–3 girly micro-gestures is fine if it remains one moment).
+3. `Same {hair}, {garment}, and {place} through the ending.`
+4. Use a negative sentence only if the setting suggests an unwanted plot. The car example says `No crash, no cutaway.` — include that kind of guardrail only when needed, not as standard gag language.
 
-Keep the description short. This niche does not need 350–500 words. Name the opening lock, the single motion, the hold.
-
----
-
-## 6. Camera, continuity, constraints
-
-### Camera
-
-Match the photo’s camera.
-
-- Front-camera close-up: phone in her hand, lens near her face, slight drift.
-- Lying on a bed shot from above: keep that high angle; do not stand her up.
-- Car seat: keep headrest / seatbelt / window light if visible.
-- Arm visible at frame edge: that arm is the phone arm; do not use it for a peace sign.
-
-No push-in unless the user asks. No orbit. No cut.
-
-### Continuity
-
-- Do not change hair length, part, or color.
-- Do not change clothes.
-- Do not move her to another room.
-- Do not add a second hand if only one is visible and the crop is tight.
-- If sunlight stripes her cheek in the still, keep that direction.
-
-### Constraints to include when useful
-
-- one continuous take, no cut
-- no extra people
-- no on-screen text
-- no beauty-filter plastic skin
-- mouth closed except the specified pout
-
-Do not paste a long generic negative list.
+Avoid an extra shot, a new room, an outfit change, “cinematic,” an orbiting camera, beauty lighting, or a second plot.
 
 ---
 
-## 7. Speech and sound
+## 8. What to lock from the photo
 
-Default: silence besides room tone. No `(S1)`, no `<d>`.
+Name details the model might otherwise discard:
 
-Do not invent greetings, flirty scripts, or Dutch lines.
+- face, gaze, lips, freckles, piercing
+- hair length, color, and how it falls
+- garment, color, and cut
+- nails, ring, necklace, glasses
+- a hand already on her chin or lip, or the arm holding the phone
+- crop and angle
+- distinctive setting details: leather seat, pillow, closet, mirror rug, ceiling beam
 
-Soundscape: one or two sentences. Bed sheet, hair brush, jacket, quiet cabin. No music unless asked.
+For a mirror shot, lock both the face looking into the lens **and** what the mirror shows.
 
-```text
-overall_soundscape: Quiet bedroom room tone and a faint hair rustle.
-
-non_diegetic_music: N/A
-```
+Continue from the pose in the photo. If her hand is already near her mouth, do not reset it to her lap.
 
 ---
 
-## 8. Beat library (use one)
+## 9. Beats
 
-Write the motion in plain physical English.
+The four examples in §16 demonstrate the **tone**, not the only allowed moves.  
+Test: Would she do this in a TikTok because she thinks she looks great? If yes, it fits. Does it look like a sexy skit or a joke? If yes, it does not fit.
+
+Write the beat as a physical action. Avoid “she looks hot.” Describe her hair, mouth, posture, gaze, or a small adjustment to her appearance.
 
 **Hair**
 
-- Her visible hand slides a strand back from her cheek and rests again near her collarbone.
-- She pinches one front piece and tucks it behind her ear, then drops the hand.
-- Fingers already in her hair comb downward once along the same section.
+- tuck a strand behind her ear or move it away from her mouth
+- let her hair slide over one shoulder
+- give the length a small flip, not a dance-style hair whip
+- play with a strand while keeping her eyes on the lens
 
-**Pout**
+**Face / mouth**
 
-- She presses her lips into a small pout, holds it, then eases into a closed mouth.
-- Her mouth, already soft, firms into a short pout and stays there.
+- hold the opening look as if checking the preview screen
+- give a small private smile, half-smile, or knowing look
+- lightly purse or part her lips so they catch the light
+- gently bite her lower lip
+- look at the camera through her lashes
+- raise one eyebrow
+- briefly look at her reflection or out the window, then look back, pleased
 
-**Peace sign**
+**Hands / small adjustments**
 
-- Her free hand rises into frame and holds a small peace sign beside her cheek. She keeps it still.
+- trail her nails along her jaw, lip, or necklace
+- adjust a top strap, collar, or hoodie zipper a fraction
+- lower or push up her glasses a few millimeters
+- make a peace sign by her cheek or chin, only if that hand is free and is not holding the phone
+- give the lens a brief wave
+- leave her hand under her chin if it is already there in the photo
 
-**Tilt (modifier or solo)**
+**Body / showing the outfit**
 
-- She tilts her head a few degrees toward her right shoulder, eyes still on the lens.
-- She tilts her head toward her left shoulder and holds.
+- tilt her head against the seat, pillow, or shoulder
+- lean slightly toward the lens, then settle back
+- shift her weight onto one hip; in a mirror, show a little more of the outfit from behind
+- bring one shoulder slightly forward so the top sits better
+- turn slightly in place if she is already standing — do not walk away
 
-**Hold**
+**Ending**
 
-- She stops moving and holds the pose until the end.
+- hold still and look into the lens, as if keeping the take because it turned out well
 
-Forbidden as defaults: finger heart, both-hands heart, hair whip, dance, blowing a kiss as a big gesture, covering the lens, standing up from a lying start frame, talking with hands.
+Combine 1–3 micro-gestures into **one** moment (nails + head tilt + smile is fine).  
+Do not build a choreography. No bouncing, walking away, talking skit, or gag.
+
+If unsure: hold → one small hair or appearance adjustment → satisfied smile → hold.
 
 ---
 
-## 9. Template
+## 10. Sound
 
 ```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+overall_soundscape: Quiet {place} under a close phone mic. {one fabric or nail sound}, her slow breath.
 
-integrated_multimodal_description: [Shot 1] Live-action vertical smartphone front-camera footage with natural skin texture and the same lighting as the opening still. The shot begins from <Picture 1>, preserving her face, eyes, brows, lips, hairstyle, visible clothing, jewelry, hand placement, background, and crop. The camera remains in the opening position with slight handheld drift, no zoom, and no cut. {ONE beat}. She holds the final pose with her eyes on the lens. Identity, outfit, and setting stay consistent. No extra people and no on-screen text.
-
-overall_soundscape: {Quiet matching ambience. One small motion sound if needed.}
-
-non_diegetic_music: N/A
+non_diegetic_music: Low sparse R&B pad, no vocals, quieter than her breath.
 ```
 
----
+Setting-specific ambience from the examples:
 
-## 10. Worked examples
+- car: quiet car cabin; soft leather; distant bird or traffic through the glass
+- bedroom / bed / mirror: quiet bedroom room tone; pillow fabric, hair, cotton
 
-These assume the uploaded still is `<Picture 1>`. Swap the preserved details to match the actual file.
+Do not repeat dialogue. No crash sound effects.  
+Use `overall_soundscape: N/A` only when total silence is requested.
 
-### Example A — sunlit bed close-up, hand already near chin / hair
-
-Use when the still is a tight face crop on linen, hard sun, white strap, fingers at the jaw.
-
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Live-action vertical smartphone footage with natural skin texture and hard sunlight. The shot begins from <Picture 1>, preserving her face, brown eyes, long light-brown hair across the pillow, white strap, thin necklace, the hand already at her jaw, the linen, the pale wall, and the sun patch on her cheek. The camera holds the same high close-up with only slight handheld drift, no zoom, and no cut. Her fingers slide a small section of hair back from her mouth and settle again at her jaw. She tilts her head a few degrees toward the pillow and holds a soft pout, eyes on the lens. Same outfit, hair length, and lighting throughout.
-
-overall_soundscape: Quiet bedroom tone. Soft hair movement against her fingers.
-
-non_diegetic_music: N/A
-```
-
-### Example B — parked-car selfie, small smile
-
-Use when the still is a car interior, hoops, pendant, white smocked top.
+Optional separate sound prompt with the same mix, shortened:
 
 ```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Live-action vertical front-camera footage inside a parked car, natural skin texture, warm daylight. The shot begins from <Picture 1>, preserving her face, brown eyes, long wavy brown hair, gold hoop earring, small pendant, white smocked top, headrest, and window light. The camera stays in the opening close-up with slight handheld drift, no zoom, and no cut. She holds the smile, then tilts her head a few degrees toward her right shoulder without turning away from the lens. She holds that tilt to the end. No peace sign, no extra hands, no speech.
-
-overall_soundscape: Quiet car-cabin tone and faint distant street sound.
-
-non_diegetic_music: N/A
-```
-
-### Example C — dim bed, dark hair, quilted pillow
-
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Live-action vertical phone close-up with dim indoor light and natural skin texture. The shot begins from <Picture 1>, preserving her face, dark eyes, long straight black hair over the quilted pillow, the pale top edge, and the tight crop. The camera stays put with slight handheld drift, no zoom, and no cut. She presses her lips into a small pout and holds it, then eases back toward a closed mouth. Her head tilts a few degrees toward the pillow. Hair fall, pillow, and lighting stay the same.
-
-overall_soundscape: Quiet bedroom room tone.
-
-non_diegetic_music: N/A
-```
-
-### Example D — warm indoor wall, finger already on chin, red lipstick
-
-Hand is occupied. Do not add a peace sign.
-
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Live-action vertical indoor phone footage with warm lamp light and natural skin texture. The shot begins from <Picture 1>, preserving her face, dark eyes, long brown hair, red lipstick, white off-shoulder top, the finger already at her chin, the plain wall, and the metal fixture at frame left. The camera holds the opening medium close-up with slight handheld drift, no zoom, and no cut. Her fingertip stays at her chin. She tilts her head a few degrees toward her left shoulder and keeps her eyes on the lens. No extra gesture.
-
-overall_soundscape: Quiet indoor room tone.
-
-non_diegetic_music: N/A
-```
-
-### Example E — wood-ceiling selfie, dark shirt, phone arm in frame
-
-The visible arm holds the phone. Beat = tilt only.
-
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Live-action vertical handheld selfie with natural skin texture and indoor light. The shot begins from <Picture 1>, preserving her face, winged liner, long dark hair, dark shirt, the raised phone arm at frame right, the wood ceiling, and the door trim. The camera stays at the same arm’s-length angle with slight handheld drift, no zoom, and no cut. She tilts her head a few degrees toward her left shoulder and holds the look into the lens. The phone arm does not change role. No peace sign.
-
-overall_soundscape: Quiet indoor room tone and faint fabric shift.
-
-non_diegetic_music: N/A
-```
-
-### Example F — low-light close-up, slight smile
-
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Live-action vertical phone close-up in low indoor light with natural skin texture. The shot begins from <Picture 1>, preserving her face, dark eyes, long dark hair, the black top, the pale wall, and the existing small smile. The camera holds the opening crop with slight handheld drift, no zoom, and no cut. She keeps the smile and tilts her head a few degrees toward her right shoulder, eyes on the lens, then holds. One motion only.
-
-overall_soundscape: Quiet indoor room tone.
-
-non_diegetic_music: N/A
+Close {place} selfie mic. {room}, {one small body sound}, slow breath. Soft R&B pad, no vocals.
 ```
 
 ---
 
-## 11. Troubleshooting
+## 11. Dialogue and on-screen text
 
-| Problem | Fix |
+- Do not invent a line of dialogue.
+- Only a line explicitly supplied by the user goes in `<d>[Language] …</d>`.
+- For 6 seconds, use no more than roughly 12 words.
+- Put original text on signs in `"..."`.
+
+Default clips do not have `(S1)`.
+
+---
+
+## 12. Length
+
+Aim for the length of the examples in §16: approximately **1,200–1,800 characters**.  
+If there is a hard limit, keep the alignment line, the preservation list, and the beat; remove atmospheric wording.
+
+---
+
+## 13. Validation
+
+- [ ] Exact I2VA alignment line, followed by a blank line
+- [ ] Three fields in the official order
+- [ ] Style immediately after `[Shot 1]`: candid vertical Instagram + no beauty filter
+- [ ] Preservation list matches the photo
+- [ ] Explicitly states who holds the camera
+- [ ] One shot, no zoom or cut
+- [ ] Hold → girly posing beat → same outfit/place
+- [ ] Tone is “I look so good,” without a sexy plot or gag
+- [ ] No invented dialogue
+- [ ] Soundscape = close phone mic + small fabric sound + breath
+- [ ] Music = low sparse R&B pad, no vocals
+- [ ] Prompt matches the tone and sentence structure in §16
+- [ ] Duration assumption is outside the prompt
+
+---
+
+## 14. Delivery format
+
+```text
+Girly IG selfie, I2VA, lightly seductive, not overtly sexy. 6 seconds.
+
+[prompt in one code block]
+
+[optional sound prompt]
+
+Set H3 to 6 seconds.
+```
+
+Do not mention the SOP, gags, or guarantees in the prompt itself.
+
+---
+
+## 15. Master template
+
+Replace every `{placeholder}` before delivery.
+
+```text
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] Candid vertical Instagram selfie in {place}, {lighting}, ordinary phone color, no beauty filter. The shot begins from <Picture 1>, preserving {face/hair/features}, {outfit}, {hands/props}, {setting}, and {framing}. She holds the phone herself. Slight handheld selfie drift, no zoom or cut.
+She holds the opening look for a beat, eyes on the lens. Then {one girly posing beat from §9}. She ends still in the same spot. Same {hair}, {garment}, and {place} through the ending.
+
+overall_soundscape: Quiet {place} under a close phone mic. {one fabric/nail sound}, her slow breath.
+
+non_diegetic_music: Low sparse R&B pad, no vocals, quieter than her breath.
+```
+
+When the phone is above her (lying down): `She holds the phone above herself.`  
+Say someone else is filming only if the photo clearly shows that.
+
+---
+
+## 16. Style examples
+
+These show the sentence structure and level of detail. Reuse the language for preserving details, the hold, close mic, and R&B pad. Do **not** copy only these four beats — choose from §9 to suit **this** photo.
+
+### 16.1 Passenger-seat selfie
+
+```text
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] Candid vertical Instagram passenger-seat selfie in a parked or slow car in daylight, ordinary phone color, no beauty filter. The shot begins from <Picture 1>, preserving her face close to the lens, freckles, glossy lips, long blonde hair across the black leather seat, white-tipped nails, hand under her chin, sage-green top, and the sliver of trees in the window behind her. She holds the phone herself. Slight handheld selfie drift, no zoom or cut.
+She holds the opening look for a beat, eyes on the lens, unhurried. Then she drags her nails slowly along her jaw, tilts her head on the seat, and lets her mouth open just enough to catch the light on her lips. She glances toward the window and back again, a small private smile, as if the camera is the only other person in the car. Same hair, top, and seat through the ending. No crash, no cutaway.
+
+overall_soundscape: Quiet car cabin under a close phone mic. Soft leather, a faint outside bird or distant traffic through the glass, her slow breath, a tiny nail tap on her skin.
+
+non_diegetic_music: Low sparse R&B pad, no vocals, quieter than her breath.
+```
+
+### 16.2 Lying-down indoor selfie
+
+```text
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] Candid vertical Instagram selfie of a woman lying back indoors in hard daylight, ordinary phone color, no beauty filter. The shot begins from <Picture 1>, preserving her face close to the lens, glossy lips, long blonde hair on the white pillow, French-tip nails, silver ring, brown knit sleeve, the textured white ceiling, and the sharp sun-shadow on the wall. She holds the phone above herself. Slight handheld selfie drift, no zoom or cut.
+She holds the opening look for a beat, eyes on the camera, fingers resting against her mouth. Then she slowly drags her nails down her lower lip and chin, tilts her head on the pillow, and lets a small lazy smile show. Sunlight stays striped across her arm. She ends still lying there, same hair, sleeve, and pillow, staring into the lens as if she has nowhere else to be.
+
+overall_soundscape: Quiet bedroom room tone under a close phone mic. Soft fabric on the pillow, a faint nail sound on her lip, her slow breath.
+
+non_diegetic_music: Low sparse R&B pad, no vocals, quieter than her breath.
+```
+
+### 16.3 Seated bedroom selfie
+
+```text
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] Candid vertical Instagram selfie in a bright bedroom, ordinary phone color, no beauty filter. The shot begins from <Picture 1>, preserving her face, long straight black hair, glossy lips, small necklace, black tank top, the visible cleavage, white wardrobe doors, rumpled white bed, wooden ceiling beam, and the slightly high selfie angle. She holds the phone herself. Slight handheld drift, no zoom or cut.
+She holds the opening half-smile into the lens for a beat. Then she leans a little closer, lets her hair slide over one shoulder, and looks up through her lashes as if catching the camera in the act. She bites her lower lip once, soft, and settles back into the same seated pose on the bed. Same hair, tank, and room through the ending.
+
+overall_soundscape: Quiet bedroom room tone under a close phone mic. Soft hair and fabric shift when she leans, one slow breath.
+
+non_diegetic_music: Low sparse R&B pad, no vocals, quieter than her breath.
+```
+
+### 16.4 Mirror selfie
+
+```text
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] Candid vertical Instagram mirror selfie in a sunlit bedroom, ordinary phone color, no beauty filter. The shot begins from <Picture 1>, preserving her face close to the lens, long straight blonde hair, blue eyes, nose ring, grey ribbed tank, grey sweatpants sitting on her hips, midriff, the open closet behind her, and the full-length mirror that shows her back and the phone in her raised hand. She holds the phone herself. Slight handheld selfie drift, no zoom or cut.
+She holds the opening look for a beat. Then she shifts her weight onto one hip so the mirror shows the tank and pants from behind a little more clearly, glances over her shoulder toward her own reflection, and looks back into the front camera with a small closed-mouth smile. Sunlight stays on her arm and hair. Same outfit, hair, and room through the ending.
+
+overall_soundscape: Quiet bedroom room tone under a close phone mic. Soft cotton shift when she changes hip, one slow breath.
+
+non_diegetic_music: Low sparse R&B pad, no vocals, quieter than her breath.
+```
+
+---
+
+## 17. Relationship to the other guides
+
+| File | Use |
 | --- | --- |
-| She stands up / changes room | Re-lock start pose and background from `<Picture 1>` |
-| Too much acting | Delete every beat except one |
-| Finger heart / dance / kiss-blow | Remove; replace with tilt or hold |
-| Peace sign on the phone arm | That arm is busy; choose tilt or pout |
-| Hand teleports | Continue from the hand already in the still |
-| Stacked hair + pout + peace | Keep one staple |
-| Head turns away | Rewrite as a small tilt toward a shoulder, eyes still on lens |
-| Dutch or extra chatter | Delete speech; English description only |
-| Plastic beauty look | Say natural skin texture; no filter smoothing |
-| Unwanted cut | Only `[Shot 1]` |
+| General MiniMax H3 guide | syntax, other modes, speakers, full-reference |
+| This SOP | girly influencer selfies from a starting photo; more beats; R&B pad |
+| Girl Content guide | even more restrained posing; hair/pout/peace sign; music `N/A` |
+
+In case of conflict: follow the official H3 syntax first, then the user's explicit request, then this SOP.  
+This SOP takes precedence over the Girl Content guide when the user wants an **influencer selfie**: girly, lightly seductive, with an “everyone is going to love this” attitude.
 
 ---
 
-## 12. Validation
+## 18. Compact reminder
 
-- [ ] I2VA alignment line present, `<Picture 1>` is the start frame
-- [ ] Opening state copied from the actual still
-- [ ] Exactly one posing beat
-- [ ] Head motion is a tilt, not a look-away
-- [ ] Occupied hands stay occupied
-- [ ] English only in the prompt body
-- [ ] No speech unless the user locked a line
-- [ ] `non_diegetic_music: N/A`
-- [ ] No cut, no extra people, no on-screen text
-- [ ] Adult woman; not explicit porn
-
----
-
-## 13. Compact reminder
-
-**The photo is frame zero. She almost does not move. Pick one: hair, pout, or peace sign. A small head tilt is enough. Hold. English. I2VA.**
+**The photo is frame zero. Candid IG. Hold. Girly posing because she thinks she looks great. Same hair and outfit. Close mic. Soft R&B. Not overtly sexy. No gag.**
