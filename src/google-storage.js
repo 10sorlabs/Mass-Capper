@@ -41,7 +41,12 @@ async function ensureSpreadsheet(auth, drive, rootFolderId) {
   const created = await sheets.spreadsheets.create({
     requestBody: {
       properties: { title: config.spreadsheetName },
-      sheets: [{ properties: { title: 'Results', frozenRowCount: 1 } }],
+      sheets: [{
+        properties: {
+          title: 'Results',
+          gridProperties: { frozenRowCount: 1 },
+        },
+      }],
     },
   });
   const id = created.data.spreadsheetId;
