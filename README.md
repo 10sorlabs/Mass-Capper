@@ -64,6 +64,8 @@ The app requests `drive.file`, `spreadsheets`, identity and email scopes. `drive
 
 The repository contains `render.yaml` for a Render Blueprint deployment.
 
+The Blueprint uses Render's free web-service plan. Free services spin down after inactivity, so the first page load after a quiet period can take roughly a minute and the Google session might need to be renewed after a restart.
+
 1. In Render, create a new Blueprint and select this GitHub repository.
 2. Once the service URL exists, add its callback URL to the Google OAuth client.
 3. Configure the following secret environment variables in Render:
