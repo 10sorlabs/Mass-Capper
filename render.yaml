@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: mass-capper
+    runtime: node
+    plan: starter
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.1
+      - key: APP_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: XAI_API_KEY
+        sync: false
+      - key: XAI_MODEL
+        value: grok-4.7
+      - key: XAI_REASONING_EFFORT
+        value: low
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_REDIRECT_URI
+        sync: false
+      - key: ALLOWED_GOOGLE_EMAIL
+        sync: false
+      - key: DRIVE_ROOT_FOLDER_NAME
+        value: Mass Capper
+      - key: SPREADSHEET_NAME
+        value: Mass Capper Results
+      - key: PUBLIC_DRIVE_PREVIEWS
+        value: false
+      - key: CLIENT_CONCURRENCY
+        value: 3
