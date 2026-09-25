@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: mass-capper
+    name: mass-capper-10sorlabs
     runtime: node
     plan: free
     buildCommand: npm ci
