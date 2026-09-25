@@ -389,5 +389,3 @@ non_diegetic_music: N/A
 ## 13. Compact reminder
 
 **The photo is frame zero. She almost does not move. Pick one: hair, pout, or peace sign. A small head tilt is enough. Hold. English. I2VA.**
-
-
