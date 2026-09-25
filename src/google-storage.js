@@ -39,6 +39,7 @@ async function ensureSpreadsheet(auth, drive, rootFolderId) {
 
   const sheets = google.sheets({ version: 'v4', auth });
   const created = await sheets.spreadsheets.create({
+    fields: 'spreadsheetId,sheets.properties.sheetId',
     requestBody: {
       properties: { title: config.spreadsheetName },
       sheets: [{
@@ -50,6 +51,10 @@ async function ensureSpreadsheet(auth, drive, rootFolderId) {
     },
   });
   const id = created.data.spreadsheetId;
+  const sheetId = created.data.sheets?.[0]?.properties?.sheetId;
+  if (!id || sheetId === undefined) {
+    throw new Error('Google Sheets returned an incomplete spreadsheet response.');
+  }
   await drive.files.update({ fileId: id, addParents: rootFolderId, removeParents: 'root', fields: 'id' });
   await sheets.spreadsheets.values.update({
     spreadsheetId: id,
@@ -68,13 +73,13 @@ async function ensureSpreadsheet(auth, drive, rootFolderId) {
       requests: [
         {
           repeatCell: {
-            range: { sheetId: 0, startRowIndex: 0, endRowIndex: 1 },
+            range: { sheetId, startRowIndex: 0, endRowIndex: 1 },
             cell: { userEnteredFormat: { textFormat: { bold: true }, backgroundColor: { red: 0.92, green: 0.94, blue: 0.98 } } },
             fields: 'userEnteredFormat(textFormat,backgroundColor)',
           },
         },
-        { updateDimensionProperties: { range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 0, endIndex: 1 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } },
-        { updateDimensionProperties: { range: { sheetId: 0, dimension: 'COLUMNS', startIndex: 1, endIndex: 2 }, properties: { pixelSize: 700 }, fields: 'pixelSize' } },
+        { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 1 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } },
+        { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 1, endIndex: 2 }, properties: { pixelSize: 700 }, fields: 'pixelSize' } },
       ],
     },
   });
