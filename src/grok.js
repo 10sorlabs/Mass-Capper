@@ -32,7 +32,7 @@ export function validatePrompt(prompt) {
     'For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.',
     'integrated_multimodal_description:',
     'overall_soundscape:',
-    'non_diegetic_music: N/A',
+    'non_diegetic_music:',
   ];
   return required.filter((needle) => !prompt.includes(needle));
 }
