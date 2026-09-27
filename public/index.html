@@ -18,18 +18,18 @@
       </header>
 
       <section id="setupView" class="center-card hidden">
-        <p class="eyebrow">Configuratie vereist</p>
-        <h1>De server mist nog instellingen.</h1>
-        <p>Vul de onderstaande environment variables in op Render en laad de pagina opnieuw.</p>
+        <p class="eyebrow">Configuration required</p>
+        <h1>The server is missing settings.</h1>
+        <p>Enter the environment variables underneath in your Render backend and refresh the page.</p>
         <pre id="missingConfig"></pre>
       </section>
 
       <section id="loginView" class="hero hidden">
         <div>
           <p class="eyebrow">Image-to-video prompting</p>
-          <h1>Van honderd startframes naar honderd bruikbare prompts.</h1>
-          <p class="lede">Upload je beelden één keer. Grok leest ieder frame volgens je vaste MiniMax H3-guide en bewaart beeld en prompt direct in Google Drive.</p>
-          <a class="button primary" href="/auth/google">Inloggen met Google</a>
+          <h1>Turn images into prompts for videos.</h1>
+          <p class="lede">Upload your images at once. Grok analyzes every frame and turns it into a prompt for MiniMax H3, which is stored in the Google Drive spreadsheet.</p>
+          <a class="button primary" href="/auth/google">Login with Google</a>
         </div>
         <div class="hero-art" aria-hidden="true">
           <div class="stack-card card-one"></div>
@@ -41,9 +41,9 @@
       <section id="appView" class="hidden">
         <div class="intro">
           <div>
-            <p class="eyebrow">Nieuwe batch</p>
-            <h1>Maak videoprompts van je startframes.</h1>
-            <p>Maximaal 100 JPG- of PNG-bestanden, tot 20 MiB per bestand.</p>
+            <p class="eyebrow">New batch</p>
+            <h1>Automatically write video prompts for your images.</h1>
+            <p>Maximum of 100 JPG- or PNG-files, to 20 MiB per file.</p>
           </div>
           <a id="sheetLinkTop" class="text-link hidden" target="_blank" rel="noreferrer">Open Google Sheet ↗</a>
         </div>
@@ -51,22 +51,22 @@
         <label id="dropzone" class="dropzone" for="fileInput">
           <input id="fileInput" type="file" accept="image/png,image/jpeg,.jpg,.jpeg,.png" multiple>
           <span class="upload-icon">↑</span>
-          <strong>Selecteer foto’s</strong>
-          <span>of sleep ze hierheen</span>
+          <strong>Select images</strong>
+          <span>or drag them here</span>
         </label>
 
         <div id="batchActions" class="batch-actions hidden">
-          <div><strong id="selectionCount">0 bestanden</strong><span id="selectionSize"></span></div>
-          <button id="startButton" class="button primary" type="button">Batch verwerken</button>
+          <div><strong id="selectionCount">0 files</strong><span id="selectionSize"></span></div>
+          <button id="startButton" class="button primary" type="button">Processing batch</button>
         </div>
 
         <section id="progressPanel" class="progress-panel hidden" aria-live="polite">
           <div class="progress-head">
-            <div><span id="progressLabel">Voorbereiden…</span><strong id="progressCount">0 / 0</strong></div>
+            <div><span id="progressLabel">Preparing…</span><strong id="progressCount">0 / 0</strong></div>
             <div class="progress-track"><span id="progressBar"></span></div>
           </div>
           <div class="result-head">
-            <h2>Resultaten</h2>
+            <h2>Results</h2>
             <a id="sheetLink" class="text-link hidden" target="_blank" rel="noreferrer">Open Google Sheet ↗</a>
           </div>
           <div id="results" class="results"></div>
@@ -77,12 +77,12 @@
       <article class="result-card">
         <img class="thumb" alt="">
         <div class="result-body">
-          <div class="result-meta"><strong class="file-name"></strong><span class="status waiting">Wachtend</span></div>
+          <div class="result-meta"><strong class="file-name"></strong><span class="status waiting">Waiting</span></div>
           <textarea class="prompt" readonly placeholder="De prompt verschijnt hier zodra Grok klaar is."></textarea>
           <div class="result-actions">
-            <button class="copy-button" type="button" disabled>Kopieer prompt</button>
-            <button class="retry-button hidden" type="button">Opnieuw proberen</button>
-            <a class="drive-link hidden" target="_blank" rel="noreferrer">Open afbeelding ↗</a>
+            <button class="copy-button" type="button" disabled>Copy prompt</button>
+            <button class="retry-button hidden" type="button">Retry</button>
+            <a class="drive-link hidden" target="_blank" rel="noreferrer">Open ↗</a>
           </div>
         </div>
       </article>
