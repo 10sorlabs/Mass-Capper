@@ -24,7 +24,9 @@ const KEY=(process.env.FAL_KEY||'').trim(), TOKEN=(process.env.PLAYGROUND_TOKEN|
 const ORIGIN=process.env.PLAYGROUND_ORIGIN||'https://pawvo-pet-video-preview.onrender.com';
 const ready=()=>!!KEY&&TOKEN.length>=24;
 if(KEY)fal.config({credentials:KEY});
-const VIDEO=new Set(['fal-ai/kling-video/v3/standard/image-to-video','fal-ai/kling-video/v3/pro/image-to-video']);
+const WAN='fal-ai/wan/v2.7/image-to-video';
+const H3=new Set(['minimax/h3-max/image-to-video','minimax/h3-max-turbo/image-to-video']);
+const VIDEO=new Set(['fal-ai/kling-video/v3/standard/image-to-video','fal-ai/kling-video/v3/pro/image-to-video',WAN,...H3]);
 const AUDIO='fal-ai/elevenlabs/tts/eleven-v3';
 const allowed=m=>VIDEO.has(m)||m===AUDIO||m===STS;
 let submissions=[],submitting=false;
@@ -40,7 +42,10 @@ if(model===AUDIO){if(!str(input.text,1500)||!str(input.voice,100))throw fail(400
 if(!str(input.prompt,2500)||!['5','10'].includes(input.duration)||typeof input.generate_audio!=='boolean')throw fail(400,'Invalid prompt, duration or audio option');
 const m=typeof input.start_image_url==='string'&&input.start_image_url.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/]+={0,2})$/);if(!m)throw fail(400,'Upload a JPG, PNG or WebP image');const bytes=Buffer.from(m[2],'base64');if(!bytes.length||bytes.length>8*1024*1024)throw fail(400,'Image exceeds 8 MB');
 const valid=m[1]==='image/jpeg'?bytes[0]===255&&bytes[1]===216:m[1]==='image/png'?bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])):bytes.toString('ascii',0,4)==='RIFF'&&bytes.toString('ascii',8,12)==='WEBP';if(!valid)throw fail(400,'Invalid image data');
-return {prompt:input.prompt.trim(),duration:input.duration,generate_audio:input.generate_audio,start_image_url:input.start_image_url};}
+const prompt=input.prompt.trim();
+if(model===WAN)return {prompt,image_url:input.start_image_url,duration:Number(input.duration),resolution:'720p',enable_prompt_expansion:false};
+if(H3.has(model))return {prompt,image_url:input.start_image_url,duration:Number(input.duration),resolution:'768P',prompt_expansion_mode:'disabled'};
+return {prompt,duration:input.duration,generate_audio:input.generate_audio,start_image_url:input.start_image_url};}
 function json(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(data))}
 const server=http.createServer(async(req,res)=>{
 const origin=req.headers.origin;if(origin===ORIGIN){res.setHeader('Access-Control-Allow-Origin',ORIGIN);res.setHeader('Vary','Origin');res.setHeader('Access-Control-Allow-Headers','Authorization, Content-Type');res.setHeader('Access-Control-Allow-Methods','GET, POST, OPTIONS')}
@@ -57,7 +62,7 @@ if(!String(req.headers['content-type']||'').startsWith('application/json'))throw
 const {model,input}=await body(req);const clean=validate(model,input);
 const now=Date.now();submissions=submissions.filter(t=>now-t<3600000);if(submitting||submissions.length>=12||submissions.filter(t=>now-t<60000).length>=2)throw fail(429,'Test rate limit reached. Try later.');
 submitting=true;submissions.push(now);
-try{const {request_id}=await fal.queue.submit(model,{input:clean});if(!request_id)throw fail(502,'No provider request ID returned');return json(res,202,{job_id:jobId(model,request_id)})}finally{submitting=false}}
+try{if(model===WAN||H3.has(model)){const [,mime,encoded]=clean.image_url.match(/^data:([^;]+);base64,(.+)$/);const ext=mime==='image/jpeg'?'jpg':mime.split('/')[1];clean.image_url=await fal.storage.upload(new File([Buffer.from(encoded,'base64')],'pet.'+ext,{type:mime}));}const {request_id}=await fal.queue.submit(model,{input:clean});if(!request_id)throw fail(502,'No provider request ID returned');return json(res,202,{job_id:jobId(model,request_id)})}finally{submitting=false}}
 if(req.method==='POST'&&path==='/api/playground/replace-voice'){
 const data=await body(req);if(!str(data.voice,100))throw fail(400,'Choose a voice name or ID');const sourceUrl=mediaUrl(data.video_url);
 const id=await mediaWork(async dir=>{const video=join(dir,'source.mp4'),wav=join(dir,'source.wav');await download(sourceUrl,video);const meta=sourceInfo(await probe(video));await ff(['-protocol_whitelist','file,pipe','-i',video,'-map','0:a:0','-vn','-ac','1','-ar','44100','-c:a','pcm_s16le',wav]);const audio=await readFile(wav);if(audio.length<1000||audio.length>5*1024*1024)throw fail(422,'Source audio size is invalid');const ap=await probe(wav);const originalDuration=Number(ap.format.duration);const audioUrl=await fal.storage.upload(new File([audio],'source.wav',{type:'audio/wav'}));return submitSTS({audio_url:audioUrl,voice:data.voice.trim(),model_id:'eleven_multilingual_sts_v2',remove_background_noise:data.remove_background_noise===true,output_format:'mp3_44100_192'},{video_url:sourceUrl,duration:meta.duration,offset:meta.offset,audio_duration:originalDuration})});return json(res,202,{job_id:id})}
